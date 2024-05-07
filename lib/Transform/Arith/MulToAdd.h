@@ -7,20 +7,10 @@
 namespace mlir {
 namespace tutorial {
 
-class MulToAddPass
-    : public PassWrapper<MulToAddPass,
-                         OperationPass<mlir::func::FuncOp>> {
-private:
-  void runOnOperation() override;
-
-  StringRef getArgument() const final { return "mul-to-add"; }
-
-  StringRef getDescription() const final {
-    return "Convert multiplications to repeated additions";
-  }
-};
+#define GEN_PASS_DECL_MULTOADD
+#include"lib/Transform/Arith/Passes.h.inc"
 
 } // namespace tutorial
 } // namespace mlir
 
-#endif // LIB_TRANSFORM_AFFINE_AFFINEFULLUNROLL_H_
+#endif // LIB_TRANSFORM_ARITH_MUL_TO_ADD_H
