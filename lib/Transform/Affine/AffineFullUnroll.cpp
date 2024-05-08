@@ -16,7 +16,7 @@ using mlir::affine::loopUnrollFull;
 struct AffineFullUnroll : impl::AffineFullUnrollBase<AffineFullUnroll> {
   using AffineFullUnrollBase::AffineFullUnrollBase;
 
-  void runOnOperation() {
+  void runOnOperation() override {
     getOperation()->walk([&](AffineForOp op) {
       if (failed(loopUnrollFull(op))) {
         op.emitError("unrolling failed");

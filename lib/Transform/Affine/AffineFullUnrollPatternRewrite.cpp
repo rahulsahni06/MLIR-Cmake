@@ -32,7 +32,7 @@ struct AffineFullUnrollPattern : public OpRewritePattern<AffineForOp> {
 struct AffineFullUnrollPatternRewrite
     : impl::AffineFullUnrollPatternRewriteBase<AffineFullUnrollPatternRewrite> {
   using AffineFullUnrollPatternRewriteBase::AffineFullUnrollPatternRewriteBase;
-  void runOnOperation() {
+  void runOnOperation() override {
     mlir::RewritePatternSet patterns(&getContext());
     patterns.add<AffineFullUnrollPattern>(&getContext());
     // One could use GreedyRewriteConfig here to slightly tweak the behavior of

@@ -82,7 +82,7 @@ struct PeelFromMul :
 struct MulToAdd
     : impl::MulToAddBase<MulToAdd> {
   using MulToAddBase::MulToAddBase;
-  void runOnOperation() {
+  void runOnOperation() override {
     mlir::RewritePatternSet patterns(&getContext());
     patterns.add<PowerOfTwoExpand>(&getContext());
     patterns.add<PeelFromMul>(&getContext());
